@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  project-for-jenkins-website:
+    image: ${DOCKER_REGISTRY-}projectforjenkinswebsite
+    build:
+      context: .
+      dockerfile: project-for-jenkins-website/Dockerfile
