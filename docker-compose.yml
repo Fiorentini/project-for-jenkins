@@ -2,7 +2,15 @@ version: '3.4'
 
 services:
   project-for-jenkins-website:
-    image: ${DOCKER_REGISTRY-}projectforjenkinswebsite
     build:
       context: .
-      dockerfile: project-for-jenkins-website/Dockerfile
+      dockerfile: Dockerfile
+    image: ${DOCKER_REGISTRY-}projectforjenkinswebsite
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    container_name: testapi
+    restart: on-failure
+    expose:
+      - "80"
+    ports:
+      - "1234:80"    
